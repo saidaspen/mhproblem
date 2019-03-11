@@ -15,7 +15,7 @@ type Player struct {
 }
 
 func (p *Player) PickDoor(numDoors int) int {
-	return RandInt(0, numDoors + 1)
+	return RandInt(0, numDoors)
 }
 
 func NewPlayer(strategy Strategy) Player {
