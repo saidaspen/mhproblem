@@ -22,15 +22,12 @@ var (
 	verbose  bool
 )
 
-func init() {
-	rand.Seed(time.Now().UTC().UnixNano())
-	numGames = *flag.Int("n", defaultGames, "number of games")
-	numDoors = *flag.Int("d", defaultDoors, "number of doors")
-	verbose = *flag.Bool("v", defaultVerbose, "verbose")
-	flag.Parse()
-}
-
 func main() {
+	rand.Seed(time.Now().UTC().UnixNano())
+	flag.IntVar(&numGames, "n", defaultGames, "number of games")
+	flag.IntVar(&numDoors, "d", defaultDoors, "number of doors")
+	flag.BoolVar(&verbose, "v", defaultVerbose, "verbose")
+	flag.Parse()
 	games := make([]internal.Game, numGames, numGames)
 	for i := 0; i < numGames; i++ {
 		games[i] = internal.NewGame(numDoors)
@@ -46,11 +43,9 @@ func main() {
 		play(&pAlwaysStay, &game, i)
 		play(&pFiftyFifty, &game, i)
 	}
-	if verbose {
-		fmt.Printf("Player that always switch won %v%%\n", wPerc(&pAlwaysSwitch))
-		fmt.Printf("Player that always stays won %v%%\n", wPerc(&pAlwaysStay))
-		fmt.Printf("Player fifty-fifty won %v%%\n", wPerc(&pFiftyFifty))
-	}
+	fmt.Printf("Player that always switch won %v%%\n", wPerc(&pAlwaysSwitch))
+	fmt.Printf("Player that always stays won %v%%\n", wPerc(&pAlwaysStay))
+	fmt.Printf("Player fifty-fifty won %v%%\n", wPerc(&pFiftyFifty))
 }
 
 func wPerc(p *internal.Player) float64 {
