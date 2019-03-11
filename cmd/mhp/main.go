@@ -74,7 +74,7 @@ func play(player *internal.Player, game *internal.Game, gameID int) {
 		finalChoiceOfDoor = otherDoor
 	} else {
 		if verbose {
-			fmt.Printf("Game: %v\tPlayer stats with door %v\n", gameID, orgPickedDoor)
+			fmt.Printf("Game: %v\tPlayer stays with door %v\n", gameID, orgPickedDoor)
 		}
 		finalChoiceOfDoor = orgPickedDoor
 	}

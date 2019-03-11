@@ -3,7 +3,7 @@ package internal
 var (
 	AlwaysSwitch = func() bool { return true}
 	AlwaysStay = func() bool { return false}
-	FiftyFifty = func() bool { return RandInt(0, 1) > 0}
+	FiftyFifty = func() bool {return RandInt(0, 2) > 0}
 )
 
 type Strategy func () bool
@@ -15,7 +15,7 @@ type Player struct {
 }
 
 func (p *Player) PickDoor(numDoors int) int {
-	return RandInt(0, numDoors)
+	return RandInt(0, numDoors + 1)
 }
 
 func NewPlayer(strategy Strategy) Player {

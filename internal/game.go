@@ -30,7 +30,7 @@ func (g *Game) OpenDoors(pickedDoor int) int {
 	}
 
 	// This is the door left after opening all other doors
-	return candidatesToKeep[RandInt(0, nDoorsToOpen -1)]
+	return candidatesToKeep[RandInt(0, nDoorsToOpen)]
 }
 
 func NewGame(numDoors int) Game{
